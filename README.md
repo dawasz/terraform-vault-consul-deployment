@@ -8,6 +8,10 @@
 
 ### Provisioning and Architecture
 
+| Individual Asset Name | Region 
+| ------ | ------ |
+| Primary Cluster | ca-central-1 | 
+
 | Asset Name | Region 
 | ------ | ------ |
 | Primary Cluster | us-east-2 | 
@@ -16,14 +20,32 @@
 | DR Cluster 1 | eu-west-1 |
 | DR Cluster 2 | ap-southeast-1 |
 
+
 From an architectural viewpoint us-east-1 was discarded as the primary region and the most practical decision was to use us-east-2.
 
 ### Basic Accsess Catalog
 
-| Asset Name | IP/Hostname
+| Asset Name | IP/Hostname | AWS ProjectID |
 | ------ | ------ 
-| Flask App Backup | http://99.79.193.142:8000/ |
-| Flask App | http://18.228.155.206:8000/ |
+| Individual Flask App | http://99.79.193.142:8000/ | cpre0xr3zsp1 / 85338f5c |
+| Flask App | http://18.228.155.206:8000/ | |
+
+### Delivered
+
+Delivered Primary Cluster with 3 Vault nodes with 6 Consul nodes
+
+Vault Initialized with AutoKMS unseal using Keybase IDs : keybase:arielazem,keybase:richp,keybase:dawasz,keybase:redacted_ahead,keybase:lxhxr
+
+Audit Engine configured to report to Syslog
+Approle configured for Vault-Agent
+Root token revoked
+
+| Use Cases | Notes |
+| Dynamic Database Credentials | Configured with Vault Agent Template |
+| Encryption Capabilities | Configured with Bash Script and Vault Agent token caching |
+| Dynamic S3 Credentials | Configured with Vault Agent Template |
+
+Provisioning code is available at https://github.com/dawasz/terraform-vault-consul-deployment/aws/
 
 ### Database Dynamic Secrets Configuration
 Database Dynamic secrets were enabled in order to work with the flask application following the steps below, for the MySQL/MariaDB database.
@@ -176,3 +198,8 @@ EOF
 ```sh
 vault agent -config=agent-config.hcl -log-level=debug
 ```
+
+
+### Next Steps / Missed Deliverables
+
+Namespaces
