@@ -203,3 +203,7 @@ vault agent -config=agent-config.hcl -log-level=debug
 ### Next Steps / Missed Deliverables
 
 Namespaces
+Performance Replication and Disaster Recovery
+SSH Engine
+Secure KV storage
+HTTPS access to LoadBalancer
