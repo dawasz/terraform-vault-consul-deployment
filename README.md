@@ -1,12 +1,8 @@
-# Spacely Sprokets
+# ACME
 
-<img src="https://omgpreviews.com/wp-content/uploads/2015/07/Logo-011.png" width="150"><br>
 <img src="https://www.digitalonus.com/wp-content/uploads/2019/06/digital_on_us_logo.png" width="300"><br>
 <img src="https://cdn.worldvectorlogo.com/logos/hashicorp.svg" width="150">
 <br><br>
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ## Documentation Sections
 
@@ -26,6 +22,7 @@ From an architectural viewpoint us-east-1 was discarded as the primary region an
 
 | Asset Name | IP/Hostname
 | ------ | ------ 
+| Flask App Backup | http://99.79.193.142:8000/ |
 | Flask App | http://18.228.155.206:8000/ |
 
 ### Database Dynamic Secrets Configuration
@@ -39,7 +36,7 @@ MySQL database configuration:
 ```sh
 vault write database/config/my-mysql-database \
     plugin_name=mysql-database-plugin \
-    connection_url="foo:foobarbaz@tcp(terraform-20200206144544828600000005.ccj5pugkq6mw.sa-east-1.rds.amazonaws.com:3306)/" \
+    connection_url="$USER:$PASS@tcp(terraform-20200206144544828600000005.ccj5pugkq6mw.sa-east-1.rds.amazonaws.com:3306)/" \
     allowed_roles="my-role"
 ```
 Role Map configuration
@@ -85,7 +82,7 @@ path "transit/+/orders" {
 ### Configure Vault Transit Engine
 ```sh
 vault secrets enable transit
-vault write -f transit/keys/orders
+vault write -f transit/keys/acme
 ```
 ### Configure Vault Agent
 Config File (/opt/vault/config/agent-config.hcl)
