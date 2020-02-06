@@ -12,7 +12,7 @@
 | ------ | ------ |
 | Primary Cluster | ca-central-1 | 
 
-| Asset Name | Region 
+| Asset Name | Region |
 | ------ | ------ |
 | Primary Cluster | us-east-2 | 
 | PR Cluster 1 | us-west-1 | 
@@ -26,7 +26,7 @@ From an architectural viewpoint us-east-1 was discarded as the primary region an
 ### Basic Accsess Catalog
 
 | Asset Name | IP/Hostname | AWS ProjectID |
-| ------ | ------ 
+| ------ | ------ | ------ |
 | Individual Flask App | http://99.79.193.142:8000/ | cpre0xr3zsp1 / 85338f5c |
 | Flask App | http://18.228.155.206:8000/ | |
 
